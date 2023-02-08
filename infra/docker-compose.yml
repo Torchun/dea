@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  nexus:
+    image: sonatype/nexus3:3.46.0
+    restart: always
+    container_name: "nexus3"
+    volumes:
+      - "/repos/infra/nexus/data:/nexus-data" # ensure "chown -R 200:200 /repos/infra/nexus/data"
+    ports:
+      - "8081:8081"
+ 
+  gitlab:
+    image: gitlab/gitlab-ce:15.8.1-ce.0
+    restart: always
+    container_name: "gitlab"
+#    hostname: "gitlab.dea"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url "http://192.168.1.45"
+        gitlab_rails["gitlab_shell_ssh_port"] = 2224 # must be disabled
+    ports:
+      - "8080:80"
+      - "2224:22"
+    volumes:
+      - "/repos/infra/gitlab/config:/etc/gitlab"
+      - "/repos/infra/gitlab/logs:/var/log/gitlab"
+      - "/repos/infra/gitlab/data:/var/opt/gitlab"
+    shm_size: "256m"
