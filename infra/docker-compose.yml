@@ -6,10 +6,10 @@ services:
     restart: always
     container_name: "nginx"
     volumes:
-      - "./nginx/conf.d:/etc/nginx/conf.d" # no need to modify permissions
+      - ./nginx/conf.d:/etc/nginx/conf.d # no need to modify permissions
     ports:
-      - "80:80"
-      - "443:443"
+      - 80:80
+      - 443:443
 
   gitlab:
     image: gitlab/gitlab-ce:15.8.1-ce.0
@@ -20,11 +20,11 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
         external_url "http://192.168.1.45"
     ports:
-      - "42001:80"
+      - 42001:80
     volumes:
-      - "./gitlab/config:/etc/gitlab"
-      - "./gitlab/logs:/var/log/gitlab"
-      - "./gitlab/data:/var/opt/gitlab"
+      - ./gitlab/config:/etc/gitlab
+      - ./gitlab/logs:/var/log/gitlab
+      - ./gitlab/data:/var/opt/gitlab
     shm_size: "256m"
 
   nexus:
@@ -32,7 +32,55 @@ services:
     restart: always
     container_name: "nexus3"
     volumes:
-      - "./nexus/data:/nexus-data" # ensure "chown -R 200:200 /repos/infra/nexus/data"
+      - ./nexus/data:/nexus-data # ensure "chown -R 200:200 /repos/infra/nexus/data"
     ports:
-      - "42002:8081"
- 
+      - 42002:8081
+
+  prometheus:
+    image: prom/prometheus:v2.42.0
+    container_name: "prometheus"
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--storage.tsdb.retention=1d" 
+
+  node-exporter:
+    image: prom/node-exporter:v1.5.0
+    user: root
+    container_name: "node-exporter"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
+    container_name: "cadvisor"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - 8080:8080
+
+  grafana:
+    image: grafana/grafana:9.3.6
+    container_name: "grafana"
+    volumes:
+      - ./grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000

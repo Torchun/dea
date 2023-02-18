@@ -1,9 +1,24 @@
 # dea
 DevOps tools for local development 
 
-### Add IP and domain names to /etc/hosts
+### Add IP routes to router's DNS records, or add domain names to `/etc/hosts` @ client OS (laptop?), e.g.:
 ```
 192.168.1.45	dea
 192.168.1.45	nexus.dea
 192.168.1.45	gitlab.dea
+```
+
+### Create nessessary directories @ server, in same directory as `docker-compose.yaml` will be placed:
+```
+mkdir -p ./nginx/conf.d
+
+mkdir -p ./gitlab/config
+mkdir -p ./gitlab/logs
+mkdir -p ./gitlab/data
+
+mkdir -p ./nexus/data # ensure "chown -R 200:200 ./nexus/data"
+chown -R 200:200 ./nexus/data
+
+mkdir -p ./prometheus
+mkdir -p ./grafana
 ```
