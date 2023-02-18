@@ -42,7 +42,8 @@ services:
     ports:
       - 42003:9090
     volumes:
-      - ./prometheus:/prometheus # ensure "chown -R 65534:65534 ./prometheus"
+      - ./prometheus/data:/prometheus # ensure "chown -R 65534:65534 ./prometheus"
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml # ensure "chown -R 65534:65534 ./prometheus"
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/prometheus"
@@ -78,10 +79,10 @@ services:
     image: grafana/grafana:9.3.6
     container_name: "grafana"
     volumes:
-      - ./grafana/data:/var/lib/grafana
+      - ./grafana/data:/var/lib/grafana # ensure "chown -R 472:0 ./grafana/data"
     environment:
       - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=secret
+      - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - prometheus
     ports:

@@ -17,3 +17,17 @@ sudo ln -s /etc/docker/certs.d/nexus.dea nexus.dea:443
 docker login nexus.dea
 docker pull nexus.dea/hub.docker.com/busybox
 ```
+
+##### To be able to export metrics:
+ - create role to read metrics only, e.g. `metrics-viewer` with privileges of `nx-metrics-all`
+ - create user to be used by prometheus, e.g. `prometheus`
+ - update credentials in `prometheus/prometheus.yml`:
+```
+  - job_name: 'nexus'
+    basic_auth:
+      username: 'prometheus'
+      password: 'prometheus'
+    static_configs:
+      - targets:
+          - "localhost:42002/service/metrics/prometheus"
+```

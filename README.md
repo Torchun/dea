@@ -20,7 +20,8 @@ mkdir -p ./nexus/data # ensure "chown -R 200:200 ./nexus/data"
 chown -R 200:200 ./nexus/data
 
 mkdir -p ./prometheus/data
-chown -R 65534:65534 ./prometheus/data
+# copy alerts.yml and prometheus.yml to ./prometheus before changing ownership
+chown -R 65534:65534 ./prometheus
 
 mkdir -p ./grafana/data
 chown -R 472:0 ./grafana/data

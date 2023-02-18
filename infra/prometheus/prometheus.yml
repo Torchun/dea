@@ -1,0 +1,38 @@
+---
+global:
+  scrape_interval: '5s'
+
+rule_files:
+  - "alerts.yml"
+
+    #alerting:
+    #  alertmanagers:
+    #  - scheme: http
+    #    static_configs:
+    #    - targets:
+    #      - "alertmanager:9093"
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets:
+        - "localhost:42003"
+
+  - job_name: "node"
+    static_configs:
+      - targets:
+          - "localhost:42004"
+
+  - job_name: "cadvisor"
+    static_configs:
+      - targets:
+              - "localhost:42005"
+
+  - job_name: 'nexus'
+    basic_auth:
+      username: 'prometheus'
+      password: 'prometheus'
+    static_configs:
+      - targets:
+          - "localhost:42002"
+
