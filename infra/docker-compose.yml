@@ -32,7 +32,7 @@ services:
     restart: always
     container_name: "nexus3"
     volumes:
-      - ./nexus/data:/nexus-data # ensure "chown -R 200:200 /repos/infra/nexus/data"
+      - ./nexus/data:/nexus-data # ensure "chown -R 200:200 ./nexus/data"
     ports:
       - 42002:8081
 
@@ -40,9 +40,9 @@ services:
     image: prom/prometheus:v2.42.0
     container_name: "prometheus"
     ports:
-      - 9090:9090
+      - 42003:9090
     volumes:
-      - ./prometheus:/prometheus
+      - ./prometheus:/prometheus # ensure "chown -R 65534:65534 ./prometheus"
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/prometheus"
