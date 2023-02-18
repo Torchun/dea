@@ -16,17 +16,17 @@ scrape_configs:
   - job_name: "prometheus"
     static_configs:
       - targets:
-        - "localhost:42003"
+        - "192.168.1.45:42003"
 
   - job_name: "node"
     static_configs:
       - targets:
-          - "localhost:42004"
+          - "192.168.1.45:42004"
 
   - job_name: "cadvisor"
     static_configs:
       - targets:
-              - "localhost:42005"
+              - "192.168.1.45:42005"
 
   - job_name: 'nexus'
     basic_auth:
@@ -34,5 +34,8 @@ scrape_configs:
       password: 'prometheus'
     static_configs:
       - targets:
-          - "localhost:42002"
+          - "192.168.1.45:42002"
+    metrics_path: /service/metrics/prometheus
 
+# can be checked via: 
+# https://prometheus.dea/targets?search=
