@@ -19,6 +19,9 @@ mkdir -p ./gitlab/data
 mkdir -p ./nexus/data # ensure "chown -R 200:200 ./nexus/data"
 chown -R 200:200 ./nexus/data
 
-mkdir -p ./prometheus
-mkdir -p ./grafana
+mkdir -p ./prometheus/data
+chown -R 65534:65534 ./prometheus/data
+
+mkdir -p ./grafana/data
+chown -R 472:0 ./grafana/data
 ```
