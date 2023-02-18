@@ -24,5 +24,7 @@ mkdir -p ./prometheus/data
 chown -R 65534:65534 ./prometheus
 
 mkdir -p ./grafana/data
+mkdir -p ./grafana/provisioning/datasources/
 chown -R 472:0 ./grafana/data
+chown -R 472:0 ./grafana/provisioning
 ```
