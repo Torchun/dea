@@ -25,6 +25,9 @@ chown -R 65534:65534 ./prometheus
 
 mkdir -p ./grafana/data
 mkdir -p ./grafana/provisioning/datasources/
+mkdir -p ./grafana/dashboards
 chown -R 472:0 ./grafana/data
 chown -R 472:0 ./grafana/provisioning
+chown -R 472:0 ./grafana/dashboards
+chown -R 472:0 ./grafana/dashboard.yaml
 ```

@@ -81,6 +81,8 @@ services:
     volumes:
       - ./grafana/data:/var/lib/grafana # ensure "chown -R 472:0 ./grafana/data"
       - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources # ensure "chown -R 472:0 ./grafana/provisioning"
+      - ./grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml # ensure "chown -R 472:0 ./grafana/dashboard.yaml"
+      - ./grafana/dashboards:/var/lib/grafana/dashboards # ensure "chown -R 472:0 ./grafana/dashboards"
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
