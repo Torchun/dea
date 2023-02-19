@@ -2,8 +2,12 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:2875",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -23,10 +27,10 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 11074,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1676728996756,
+  "id": 8,
   "links": [
     {
+      "$$hashKey": "object:2300",
       "icon": "bolt",
       "tags": [],
       "targetBlank": true,
@@ -36,6 +40,7 @@
       "url": "https://grafana.com/grafana/dashboards/11074"
     },
     {
+      "$$hashKey": "object:2301",
       "icon": "question",
       "tags": [],
       "targetBlank": true,
@@ -45,6 +50,7 @@
       "url": "https://github.com/starsliao"
     },
     {
+      "$$hashKey": "object:2302",
       "asDropdown": true,
       "icon": "external link",
       "tags": [],
@@ -59,7 +65,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "gridPos": {
         "h": 1,
@@ -69,6 +75,15 @@
       },
       "id": 187,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Resource Overview (associated JOB)，Host：$show_hostname，Instance：$node",
       "type": "row"
     },
@@ -76,7 +91,7 @@
       "columns": [],
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "Partition utilization, disk read, disk write, download bandwidth, upload bandwidth, if there are multiple network cards or multiple partitions, it is the value of the network card or partition with the highest utilization rate collected.\n\nCurrEstab: The number of TCP connections whose current status is ESTABLISHED or CLOSE-WAIT.",
       "fontSize": "80%",
@@ -94,6 +109,7 @@
       },
       "styles": [
         {
+          "$$hashKey": "object:1600",
           "alias": "Hostname",
           "align": "auto",
           "colors": [
@@ -113,6 +129,7 @@
           "unit": "bytes"
         },
         {
+          "$$hashKey": "object:1601",
           "alias": "IP（Link to details）",
           "align": "auto",
           "colors": [
@@ -133,6 +150,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:1602",
           "alias": "Memory",
           "align": "auto",
           "colors": [
@@ -150,6 +168,7 @@
           "unit": "bytes"
         },
         {
+          "$$hashKey": "object:1603",
           "alias": "CPU Cores",
           "align": "auto",
           "colors": [
@@ -165,6 +184,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:1604",
           "alias": " Uptime",
           "align": "auto",
           "colors": [
@@ -181,6 +201,7 @@
           "unit": "s"
         },
         {
+          "$$hashKey": "object:1605",
           "alias": "Partition used%*",
           "align": "auto",
           "colorMode": "cell",
@@ -201,6 +222,7 @@
           "unit": "percent"
         },
         {
+          "$$hashKey": "object:1606",
           "alias": "CPU used%",
           "align": "auto",
           "colorMode": "cell",
@@ -221,6 +243,7 @@
           "unit": "percent"
         },
         {
+          "$$hashKey": "object:1607",
           "alias": "Memory used%",
           "align": "auto",
           "colorMode": "cell",
@@ -241,6 +264,7 @@
           "unit": "percent"
         },
         {
+          "$$hashKey": "object:1608",
           "alias": "Disk read*",
           "align": "auto",
           "colorMode": "cell",
@@ -261,6 +285,7 @@
           "unit": "Bps"
         },
         {
+          "$$hashKey": "object:1609",
           "alias": "Disk write*",
           "align": "auto",
           "colorMode": "cell",
@@ -281,6 +306,7 @@
           "unit": "Bps"
         },
         {
+          "$$hashKey": "object:1610",
           "alias": "Download*",
           "align": "auto",
           "colorMode": "cell",
@@ -301,6 +327,7 @@
           "unit": "bps"
         },
         {
+          "$$hashKey": "object:1611",
           "alias": "Upload*",
           "align": "auto",
           "colorMode": "cell",
@@ -321,6 +348,7 @@
           "unit": "bps"
         },
         {
+          "$$hashKey": "object:1612",
           "alias": "5m load",
           "align": "auto",
           "colors": [
@@ -337,6 +365,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:1613",
           "alias": "CurrEstab",
           "align": "auto",
           "colorMode": "cell",
@@ -357,6 +386,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:1614",
           "alias": "TCP_tw",
           "align": "center",
           "colorMode": "cell",
@@ -376,6 +406,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:1615",
           "alias": "",
           "align": "right",
           "colors": [
@@ -392,6 +423,10 @@
       ],
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
           "format": "table",
           "instant": true,
@@ -400,6 +435,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "sum(time() - node_boot_time_seconds{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})by(instance)",
           "format": "table",
           "hide": false,
@@ -409,6 +448,10 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
           "format": "table",
           "hide": false,
@@ -418,6 +461,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "count(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode='system'}) by (instance)",
           "format": "table",
           "hide": false,
@@ -427,6 +474,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_load5{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}",
           "format": "table",
           "instant": true,
@@ -435,6 +486,10 @@
           "refId": "L"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(1 - avg(rate(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode=\"idle\"}[$interval])) by (instance)) * 100",
           "format": "table",
           "hide": false,
@@ -444,6 +499,10 @@
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(1 - (node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} / (node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})))* 100",
           "format": "table",
           "hide": false,
@@ -453,6 +512,10 @@
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "max((node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}-node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}) *100/(node_filesystem_avail_bytes {origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}+(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}-node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"})))by(instance)",
           "format": "table",
           "hide": false,
@@ -462,6 +525,10 @@
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "max(rate(node_disk_read_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])) by (instance)",
           "format": "table",
           "hide": false,
@@ -471,6 +538,10 @@
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "max(rate(node_disk_written_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])) by (instance)",
           "format": "table",
           "hide": false,
@@ -480,6 +551,10 @@
           "refId": "I"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_netstat_Tcp_CurrEstab{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
           "format": "table",
           "hide": false,
@@ -489,6 +564,10 @@
           "refId": "M"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_sockstat_TCP_tw{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
           "format": "table",
           "hide": false,
@@ -498,6 +577,10 @@
           "refId": "N"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "max(rate(node_network_receive_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])*8) by (instance)",
           "format": "table",
           "hide": false,
@@ -507,6 +590,10 @@
           "refId": "J"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "max(rate(node_network_transmit_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])*8) by (instance)",
           "format": "table",
           "hide": false,
@@ -541,7 +628,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
@@ -584,12 +671,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:2312",
           "alias": "Overall average used%",
           "lines": false,
           "pointradius": 1,
@@ -597,6 +685,7 @@
           "yaxis": 2
         },
         {
+          "$$hashKey": "object:2313",
           "alias": "CPU Cores",
           "color": "#C4162A"
         }
@@ -606,6 +695,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "count(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\", mode='system'})",
           "format": "time_series",
           "hide": false,
@@ -617,6 +710,10 @@
           "step": 240
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "sum(node_load5{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})",
           "format": "time_series",
           "hide": false,
@@ -627,6 +724,10 @@
           "step": 240
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "avg(1 - avg(rate(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode=\"idle\"}[$interval])) by (instance)) * 100",
           "format": "time_series",
           "hide": false,
@@ -653,12 +754,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:8791",
           "format": "short",
           "label": "Total 5m load",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:8792",
           "decimals": 0,
           "format": "percent",
           "label": "Overall average used%",
@@ -686,7 +789,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 1,
       "fieldConfig": {
@@ -727,17 +830,19 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:2494",
           "alias": "Total",
           "color": "#C4162A",
           "fill": 0
         },
         {
+          "$$hashKey": "object:2495",
           "alias": "Overall Average Used%",
           "lines": false,
           "pointradius": 1,
@@ -750,6 +855,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})",
           "format": "time_series",
           "hide": false,
@@ -761,6 +870,10 @@
           "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})",
           "format": "time_series",
           "hide": false,
@@ -771,6 +884,10 @@
           "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}) / sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}))*100",
           "format": "time_series",
           "hide": false,
@@ -796,6 +913,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:8938",
           "format": "bytes",
           "label": "Total",
           "logBase": 1,
@@ -803,6 +921,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:8939",
           "format": "percent",
           "label": "Overall Average Used%",
           "logBase": 1,
@@ -820,7 +939,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 1,
       "description": "",
@@ -863,12 +982,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:2617",
           "alias": "Overall Average Used%",
           "lines": false,
           "pointradius": 1,
@@ -876,6 +996,7 @@
           "yaxis": 2
         },
         {
+          "$$hashKey": "object:2618",
           "alias": "Total",
           "color": "#C4162A"
         }
@@ -885,6 +1006,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))",
           "format": "time_series",
           "instant": false,
@@ -894,6 +1019,10 @@
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))",
           "format": "time_series",
           "instant": false,
@@ -903,6 +1032,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))) *100/(sum(avg(node_filesystem_avail_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))+(sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))))",
           "format": "time_series",
           "instant": false,
@@ -928,6 +1061,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:8990",
           "decimals": 1,
           "format": "bytes",
           "label": "Total",
@@ -936,6 +1070,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:8991",
           "format": "percent",
           "label": "Overall Average Used%",
           "logBase": 1,
@@ -950,7 +1085,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "gridPos": {
         "h": 1,
@@ -960,13 +1095,22 @@
       },
       "id": 189,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Resource Details：【$show_hostname】",
       "type": "row"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
@@ -1026,12 +1170,15 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "avg(time() - node_boot_time_seconds{instance=~\"$node\"})",
           "format": "time_series",
           "hide": false,
@@ -1049,7 +1196,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -1099,6 +1246,8 @@
       "id": 177,
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -1107,12 +1256,15 @@
           "fields": "",
           "values": false
         },
-        "showUnfilled": true,
-        "text": {}
+        "showUnfilled": true
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "100 - (avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"idle\"}[$interval])) * 100)",
           "instant": true,
           "interval": "",
@@ -1120,6 +1272,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"iowait\"}[$interval])) * 100",
           "hide": true,
           "instant": true,
@@ -1128,6 +1284,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(1 - (node_memory_MemAvailable_bytes{instance=~\"$node\"} / (node_memory_MemTotal_bytes{instance=~\"$node\"})))* 100",
           "instant": true,
           "interval": "",
@@ -1135,6 +1295,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"})*100 /(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}))",
           "hide": false,
           "instant": true,
@@ -1143,6 +1307,10 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(1 - ((node_memory_SwapFree_bytes{instance=~\"$node\"} + 1)/ (node_memory_SwapTotal_bytes{instance=~\"$node\"} + 1))) * 100",
           "instant": true,
           "interval": "",
@@ -1157,7 +1325,7 @@
       "columns": [],
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "In this kanban: the total disk, usage, available, and usage rate are consistent with the values of the Size, Used, Avail, and Use% columns of the df command, and the value of Use% will be rounded to one decimal place, which will be more accurate .\n\nNote: The Use% algorithm in df is: (size-free) * 100 / (avail + (size-free)), the result is divisible by this value, non-divisible by this value is +1, and the unit of the result is %.\nRefer to the df command source code:",
       "fontSize": "80%",
@@ -1183,6 +1351,7 @@
       },
       "styles": [
         {
+          "$$hashKey": "object:307",
           "alias": "Mounted on",
           "align": "auto",
           "colors": [
@@ -1201,6 +1370,7 @@
           "unit": "bytes"
         },
         {
+          "$$hashKey": "object:308",
           "alias": "Avail",
           "align": "auto",
           "colorMode": "value",
@@ -1221,6 +1391,7 @@
           "unit": "bytes"
         },
         {
+          "$$hashKey": "object:309",
           "alias": "Used",
           "align": "auto",
           "colorMode": "cell",
@@ -1241,6 +1412,7 @@
           "unit": "percent"
         },
         {
+          "$$hashKey": "object:310",
           "alias": "Size",
           "align": "auto",
           "colors": [
@@ -1258,6 +1430,7 @@
           "unit": "bytes"
         },
         {
+          "$$hashKey": "object:311",
           "alias": "Filesystem",
           "align": "auto",
           "colors": [
@@ -1275,6 +1448,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:312",
           "alias": "Device",
           "align": "auto",
           "colors": [
@@ -1294,6 +1468,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:313",
           "alias": "",
           "align": "auto",
           "colors": [
@@ -1312,6 +1487,10 @@
       ],
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-0",
           "format": "table",
           "hide": false,
@@ -1322,6 +1501,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-0",
           "format": "table",
           "hide": false,
@@ -1332,6 +1515,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}) *100/(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}))",
           "format": "table",
           "hide": false,
@@ -1349,7 +1536,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
@@ -1410,12 +1597,15 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"iowait\"}[$interval])) * 100",
           "format": "time_series",
           "hide": false,
@@ -1444,7 +1634,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "editable": true,
       "error": false,
@@ -1487,12 +1677,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "pointradius": 1,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:2970",
           "alias": "/.*_transmit$/",
           "transform": "negative-Y"
         }
@@ -1502,6 +1693,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "increase(node_network_receive_bytes_total{instance=~\"$node\",device=~\"$device\"}[60m])",
           "interval": "60m",
           "intervalFactor": 1,
@@ -1512,6 +1707,10 @@
           "target": ""
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "increase(node_network_transmit_bytes_total{instance=~\"$node\",device=~\"$device\"}[60m])",
           "hide": false,
           "interval": "60m",
@@ -1538,12 +1737,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2977",
           "format": "bytes",
           "label": "transmit（-）/receive（+）",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:2978",
           "format": "short",
           "logBase": 1,
           "show": false
@@ -1556,7 +1757,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
@@ -1614,12 +1815,15 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "count(node_cpu_seconds_total{instance=~\"$node\", mode='system'})",
           "format": "time_series",
           "instant": true,
@@ -1636,7 +1840,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
@@ -1694,12 +1898,15 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "avg(node_filesystem_files_free{instance=~\"$node\",mountpoint=\"$maxmount\",fstype=~\"ext.?|xfs\"})",
           "format": "time_series",
           "instant": true,
@@ -1716,7 +1923,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
@@ -1775,12 +1982,15 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "sum(node_memory_MemTotal_bytes{instance=~\"$node\"})",
           "format": "time_series",
           "instant": true,
@@ -1797,7 +2007,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
@@ -1855,12 +2065,15 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "avg(node_filefd_maximum{instance=~\"$node\"})",
           "format": "time_series",
           "instant": true,
@@ -1894,7 +2107,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 2,
       "description": "",
@@ -1938,12 +2151,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:3051",
           "alias": "/.*Total/",
           "color": "#C4162A",
           "fill": 0
@@ -1954,6 +2168,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"system\"}[$interval])) by (instance) *100",
           "format": "time_series",
           "hide": false,
@@ -1965,6 +2183,10 @@
           "step": 20
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"user\"}[$interval])) by (instance) *100",
           "format": "time_series",
           "hide": false,
@@ -1975,6 +2197,10 @@
           "step": 240
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"iowait\"}[$interval])) by (instance) *100",
           "format": "time_series",
           "hide": false,
@@ -1986,6 +2212,10 @@
           "step": 240
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(1 - avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"idle\"}[$interval])) by (instance))*100",
           "format": "time_series",
           "hide": false,
@@ -2012,6 +2242,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:11294",
           "decimals": 0,
           "format": "percent",
           "label": "",
@@ -2019,6 +2250,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:11295",
           "format": "short",
           "logBase": 1,
           "show": false
@@ -2045,7 +2277,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 2,
       "fieldConfig": {
@@ -2088,17 +2320,19 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:3234",
           "alias": "Total",
           "color": "#C4162A",
           "fill": 0
         },
         {
+          "$$hashKey": "object:3235",
           "alias": "Used%",
           "color": "rgb(0, 209, 255)",
           "lines": false,
@@ -2112,6 +2346,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_memory_MemTotal_bytes{instance=~\"$node\"}",
           "format": "time_series",
           "hide": false,
@@ -2123,6 +2361,10 @@
           "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_memory_MemTotal_bytes{instance=~\"$node\"} - node_memory_MemAvailable_bytes{instance=~\"$node\"}",
           "format": "time_series",
           "hide": false,
@@ -2133,6 +2375,10 @@
           "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_memory_MemAvailable_bytes{instance=~\"$node\"}",
           "format": "time_series",
           "hide": false,
@@ -2143,6 +2389,10 @@
           "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_memory_Buffers_bytes{instance=~\"$node\"}",
           "format": "time_series",
           "hide": true,
@@ -2153,6 +2403,10 @@
           "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_memory_MemFree_bytes{instance=~\"$node\"}",
           "format": "time_series",
           "hide": true,
@@ -2162,6 +2416,10 @@
           "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_memory_Cached_bytes{instance=~\"$node\"}",
           "format": "time_series",
           "hide": true,
@@ -2171,6 +2429,10 @@
           "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_memory_MemTotal_bytes{instance=~\"$node\"} - (node_memory_Cached_bytes{instance=~\"$node\"} + node_memory_Buffers_bytes{instance=~\"$node\"} + node_memory_MemFree_bytes{instance=~\"$node\"})",
           "format": "time_series",
           "hide": true,
@@ -2178,6 +2440,10 @@
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(1 - (node_memory_MemAvailable_bytes{instance=~\"$node\"} / (node_memory_MemTotal_bytes{instance=~\"$node\"})))* 100",
           "format": "time_series",
           "hide": false,
@@ -2203,12 +2469,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:3130",
           "format": "bytes",
           "logBase": 1,
           "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:3131",
           "format": "percent",
           "label": "Utilization%",
           "logBase": 1,
@@ -2231,7 +2499,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 2,
       "fieldConfig": {
@@ -2274,12 +2542,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "9.3.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:3308",
           "alias": "/.*_transmit$/",
           "transform": "negative-Y"
         }
@@ -2289,6 +2558,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_network_receive_bytes_total{instance=~'$node',device=~\"$device\"}[$interval])*8",
           "format": "time_series",
           "interval": "",
@@ -2298,6 +2571,10 @@
           "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_network_transmit_bytes_total{instance=~'$node',device=~\"$device\"}[$interval])*8",
           "format": "time_series",
           "interval": "",
@@ -2323,12 +2600,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:3315",
           "format": "bps",
           "label": "transmit（-）/receive（+）",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:3316",
           "format": "short",
           "logBase": 1,
           "show": false
@@ -2349,13 +2628,14 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 2,
       "editable": true,
       "error": false,
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2396,12 +2676,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "7.2.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:3389",
           "alias": "/.*CPU cores/",
           "color": "#C4162A"
         }
@@ -2411,6 +2692,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_load1{instance=~\"$node\"}",
           "format": "time_series",
           "instant": false,
@@ -2423,6 +2708,10 @@
           "target": ""
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_load5{instance=~\"$node\"}",
           "format": "time_series",
           "instant": false,
@@ -2433,6 +2722,10 @@
           "step": 20
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_load15{instance=~\"$node\"}",
           "format": "time_series",
           "instant": false,
@@ -2443,6 +2736,10 @@
           "step": 20
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": " sum(count(node_cpu_seconds_total{instance=~\"$node\", mode='system'}) by (cpu,instance)) by(instance)",
           "format": "time_series",
           "instant": false,
@@ -2470,11 +2767,13 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:3396",
           "format": "short",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:3397",
           "format": "short",
           "logBase": 1,
           "show": true
@@ -2493,12 +2792,13 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 2,
       "description": "Per second read / write bytes ",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2536,12 +2836,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "7.2.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:3474",
           "alias": "/.*_Read bytes$/",
           "transform": "negative-Y"
         }
@@ -2551,6 +2852,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_disk_read_bytes_total{instance=~\"$node\"}[$interval])",
           "format": "time_series",
           "interval": "",
@@ -2560,6 +2865,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_disk_written_bytes_total{instance=~\"$node\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -2586,12 +2895,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:3481",
           "format": "Bps",
           "label": "Bytes read (-) / write (+)",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:3482",
           "format": "short",
           "logBase": 1,
           "show": false
@@ -2608,12 +2919,13 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 1,
       "description": "",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2651,12 +2963,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "7.2.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:3554",
           "alias": "/Inodes.*/",
           "yaxis": 2
         }
@@ -2666,6 +2979,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}) *100/(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}))",
           "format": "time_series",
           "instant": false,
@@ -2675,6 +2992,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_filesystem_files_free{instance=~'$node',fstype=~\"ext.?|xfs\"} / node_filesystem_files{instance=~'$node',fstype=~\"ext.?|xfs\"}",
           "hide": true,
           "interval": "",
@@ -2698,6 +3019,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:3561",
           "format": "percent",
           "label": "",
           "logBase": 1,
@@ -2706,6 +3028,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:3562",
           "decimals": 2,
           "format": "percentunit",
           "logBase": 1,
@@ -2726,12 +3049,13 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 2,
       "description": "Read/write completions per second\n\nWrites completed: 每个磁盘分区每秒写完成次数\n\nIO now 每个磁盘分区每秒正在处理的输入/输出请求数",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2769,12 +3093,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "7.2.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:3711",
           "alias": "/.*_Reads completed$/",
           "transform": "negative-Y"
         }
@@ -2784,6 +3109,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_disk_reads_completed_total{instance=~\"$node\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -2794,6 +3123,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_disk_writes_completed_total{instance=~\"$node\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -2804,6 +3137,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_disk_io_now{instance=~\"$node\"}",
           "format": "time_series",
           "hide": true,
@@ -2829,12 +3166,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:3718",
           "format": "iops",
           "label": "IO read (-) / write (+)",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:3719",
           "format": "short",
           "logBase": 1,
           "show": true
@@ -2864,11 +3203,12 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "The time spent on I/O in the natural time of each second.（wall-clock time）",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2905,7 +3245,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "7.2.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2915,6 +3255,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_disk_io_time_seconds_total{instance=~\"$node\"}[$interval])",
           "format": "time_series",
           "interval": "",
@@ -2939,12 +3283,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:3796",
           "format": "percentunit",
           "label": "",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:3797",
           "format": "short",
           "logBase": 1,
           "show": false
@@ -2963,12 +3309,13 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 2,
       "description": "Time spent on each read/write operation",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -3006,12 +3353,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "7.2.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:4023",
           "alias": "/,*_Read time$/",
           "transform": "negative-Y"
         }
@@ -3021,6 +3369,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_disk_read_time_seconds_total{instance=~\"$node\"}[$interval]) / rate(node_disk_reads_completed_total{instance=~\"$node\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -3031,6 +3383,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_disk_write_time_seconds_total{instance=~\"$node\"}[$interval]) / rate(node_disk_writes_completed_total{instance=~\"$node\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -3041,6 +3397,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_disk_io_time_seconds_total{instance=~\"$node\"}[$interval])",
           "format": "time_series",
           "hide": true,
@@ -3051,6 +3411,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_disk_io_time_weighted_seconds_total{instance=~\"$node\"}[$interval])",
           "format": "time_series",
           "hide": true,
@@ -3076,12 +3440,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:4030",
           "format": "s",
           "label": "Time read (-) / write (+)",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:4031",
           "format": "short",
           "logBase": 1,
           "show": false
@@ -3102,12 +3468,13 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "decimals": 2,
       "description": "Sockets_used - Sockets currently in use\n\nCurrEstab - TCP connections for which the current state is either ESTABLISHED or CLOSE- WAIT\n\nTCP_alloc - Allocated sockets\n\nTCP_tw - Sockets wating close\n\nUDP_inuse - Udp sockets currently in use\n\nRetransSegs - TCP retransmission packets\n\nOutSegs - Number of packets sent by TCP\n\nInSegs - Number of packets received by TCP",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -3147,12 +3514,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "7.2.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:4103",
           "alias": "/.*Sockets_used/",
           "color": "#E02F44",
           "lines": false,
@@ -3166,6 +3534,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_netstat_Tcp_CurrEstab{instance=~'$node'}",
           "format": "time_series",
           "hide": false,
@@ -3177,6 +3549,10 @@
           "step": 20
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_sockstat_TCP_tw{instance=~'$node'}",
           "format": "time_series",
           "interval": "",
@@ -3185,6 +3561,10 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_sockstat_sockets_used{instance=~'$node'}",
           "hide": false,
           "interval": "30m",
@@ -3193,18 +3573,30 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_sockstat_UDP_inuse{instance=~'$node'}",
           "interval": "",
           "legendFormat": "UDP_inuse",
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_sockstat_TCP_alloc{instance=~'$node'}",
           "interval": "",
           "legendFormat": "TCP_alloc",
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_netstat_Tcp_PassiveOpens{instance=~'$node'}[$interval])",
           "hide": true,
           "interval": "",
@@ -3212,6 +3604,10 @@
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_netstat_Tcp_ActiveOpens{instance=~'$node'}[$interval])",
           "hide": true,
           "interval": "",
@@ -3219,18 +3615,30 @@
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_netstat_Tcp_InSegs{instance=~'$node'}[$interval])",
           "interval": "",
           "legendFormat": "Tcp_InSegs",
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_netstat_Tcp_OutSegs{instance=~'$node'}[$interval])",
           "interval": "",
           "legendFormat": "Tcp_OutSegs",
           "refId": "I"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_netstat_Tcp_RetransSegs{instance=~'$node'}[$interval])",
           "hide": false,
           "interval": "",
@@ -3238,6 +3646,10 @@
           "refId": "J"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_netstat_TcpExt_ListenDrops{instance=~'$node'}[$interval])",
           "hide": true,
           "interval": "",
@@ -3262,11 +3674,13 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:4118",
           "format": "short",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:4119",
           "format": "short",
           "label": "Total_Sockets_used",
           "logBase": 1,
@@ -3290,11 +3704,12 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "EYEOhcwnz"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -3329,12 +3744,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "7.2.0",
       "pointradius": 1,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:4197",
           "alias": "switches",
           "color": "#FADE2A",
           "lines": false,
@@ -3343,6 +3759,7 @@
           "yaxis": 2
         },
         {
+          "$$hashKey": "object:4198",
           "alias": "used filefd",
           "color": "#F2495C"
         }
@@ -3352,6 +3769,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_filefd_allocated{instance=~\"$node\"}",
           "format": "time_series",
           "instant": false,
@@ -3361,6 +3782,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "rate(node_context_switches_total{instance=~\"$node\"}[$interval])",
           "interval": "",
           "intervalFactor": 5,
@@ -3368,6 +3793,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "  (node_filefd_allocated{instance=~\"$node\"}/node_filefd_maximum{instance=~\"$node\"}) *100",
           "format": "time_series",
           "hide": true,
@@ -3394,12 +3823,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:4219",
           "format": "short",
           "label": "used filefd",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:4220",
           "format": "short",
           "label": "context_switches",
           "logBase": 1,
@@ -3412,7 +3843,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 35,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [
     "Prometheus",
@@ -3431,28 +3862,9 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "EYEOhcwnz"
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(origin_prometheus)",
-        "error": {
-          "config": {
-            "headers": {
-              "X-Grafana-Org-Id": 1
-            },
-            "hideFromInspector": true,
-            "method": "GET",
-            "retry": 0,
-            "url": "api/datasources/proxy/1/api/v1/label/origin_prometheus/values?start=1676685797&end=1676728997"
-          },
-          "data": {
-            "error": "Bad Gateway",
-            "message": "Bad Gateway",
-            "response": ""
-          },
-          "message": "Bad Gateway",
-          "status": 502,
-          "statusText": "Bad Gateway"
-        },
         "hide": 0,
         "includeAll": false,
         "label": "Origin_prom",
@@ -3480,34 +3892,9 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "EYEOhcwnz"
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(node_uname_info{origin_prometheus=~\"$origin_prometheus\"}, job)",
-        "error": {
-          "config": {
-            "data": {
-              "end": "1676728997",
-              "match[]": "node_uname_info{origin_prometheus=~\"\"}",
-              "start": "1676685797"
-            },
-            "headers": {
-              "Content-Type": "application/x-www-form-urlencoded",
-              "X-Grafana-Org-Id": 1
-            },
-            "hideFromInspector": true,
-            "method": "POST",
-            "retry": 0,
-            "url": "api/datasources/proxy/1/api/v1/series"
-          },
-          "data": {
-            "error": "Bad Gateway",
-            "message": "Bad Gateway",
-            "response": ""
-          },
-          "message": "Bad Gateway",
-          "status": 502,
-          "statusText": "Bad Gateway"
-        },
         "hide": 0,
         "includeAll": false,
         "label": "JOB",
@@ -3535,34 +3922,9 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "EYEOhcwnz"
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}, nodename)",
-        "error": {
-          "config": {
-            "data": {
-              "end": "1676728997",
-              "match[]": "node_uname_info{origin_prometheus=~\"\",job=~\"node\"}",
-              "start": "1676685797"
-            },
-            "headers": {
-              "Content-Type": "application/x-www-form-urlencoded",
-              "X-Grafana-Org-Id": 1
-            },
-            "hideFromInspector": true,
-            "method": "POST",
-            "retry": 0,
-            "url": "api/datasources/proxy/1/api/v1/series"
-          },
-          "data": {
-            "error": "Bad Gateway",
-            "message": "Bad Gateway",
-            "response": ""
-          },
-          "message": "Bad Gateway",
-          "status": 502,
-          "statusText": "Bad Gateway"
-        },
         "hide": 0,
         "includeAll": true,
         "label": "Host",
@@ -3585,40 +3947,15 @@
       {
         "allFormat": "glob",
         "current": {
-          "selected": true,
-          "text": [],
-          "value": []
+          "selected": false,
+          "text": "192.168.1.45:42004",
+          "value": "192.168.1.45:42004"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "EYEOhcwnz"
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",nodename=~\"$hostname\"},instance)",
-        "error": {
-          "config": {
-            "data": {
-              "end": "1676728997",
-              "match[]": "node_uname_info{origin_prometheus=~\"\",job=~\"node\",nodename=~\"()\"}",
-              "start": "1676685797"
-            },
-            "headers": {
-              "Content-Type": "application/x-www-form-urlencoded",
-              "X-Grafana-Org-Id": 1
-            },
-            "hideFromInspector": true,
-            "method": "POST",
-            "retry": 0,
-            "url": "api/datasources/proxy/1/api/v1/series"
-          },
-          "data": {
-            "error": "Bad Gateway",
-            "message": "Bad Gateway",
-            "response": ""
-          },
-          "message": "Bad Gateway",
-          "status": 502,
-          "statusText": "Bad Gateway"
-        },
         "hide": 0,
         "includeAll": false,
         "label": "Instance",
@@ -3648,34 +3985,9 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "EYEOhcwnz"
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(node_network_info{origin_prometheus=~\"$origin_prometheus\",device!~'tap.*|veth.*|br.*|docker.*|virbr.*|lo.*|cni.*'},device)",
-        "error": {
-          "config": {
-            "data": {
-              "end": "1676728997",
-              "match[]": "node_network_info{origin_prometheus=~\"\",device!~'tap.*|veth.*|br.*|docker.*|virbr.*|lo.*|cni.*'}",
-              "start": "1676685797"
-            },
-            "headers": {
-              "Content-Type": "application/x-www-form-urlencoded",
-              "X-Grafana-Org-Id": 1
-            },
-            "hideFromInspector": true,
-            "method": "POST",
-            "retry": 0,
-            "url": "api/datasources/proxy/1/api/v1/series"
-          },
-          "data": {
-            "error": "Bad Gateway",
-            "message": "Bad Gateway",
-            "response": ""
-          },
-          "message": "Bad Gateway",
-          "status": 502,
-          "statusText": "Bad Gateway"
-        },
         "hide": 0,
         "includeAll": true,
         "label": "NIC",
@@ -3759,14 +4071,9 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "EYEOhcwnz"
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "query_result(topk(1,sort_desc (max(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",instance=~'$node',fstype=~\"ext.?|xfs\",mountpoint!~\".*pods.*\"}) by (mountpoint))))",
-        "error": {
-          "message": "\"Bad Gateway\"",
-          "status": 502,
-          "statusText": "Bad Gateway"
-        },
         "hide": 2,
         "includeAll": false,
         "label": "maxmount",
@@ -3789,39 +4096,14 @@
       {
         "current": {
           "selected": false,
-          "text": "173448d2314e",
-          "value": "173448d2314e"
+          "text": "a463c10a4ff1",
+          "value": "a463c10a4ff1"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "EYEOhcwnz"
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",instance=~\"$node\"}, nodename)",
-        "error": {
-          "config": {
-            "data": {
-              "end": "1676729006",
-              "match[]": "node_uname_info{origin_prometheus=~\"\",job=~\"node\",instance=~\"()\"}",
-              "start": "1676685806"
-            },
-            "headers": {
-              "Content-Type": "application/x-www-form-urlencoded",
-              "X-Grafana-Org-Id": 1
-            },
-            "hideFromInspector": true,
-            "method": "POST",
-            "retry": 0,
-            "url": "api/datasources/proxy/1/api/v1/series"
-          },
-          "data": {
-            "error": "Bad Gateway",
-            "message": "Bad Gateway",
-            "response": ""
-          },
-          "message": "Bad Gateway",
-          "status": 502,
-          "statusText": "Bad Gateway"
-        },
         "hide": 2,
         "includeAll": false,
         "label": "show_hostname",
@@ -3844,19 +4126,14 @@
       {
         "current": {
           "selected": false,
-          "text": "2",
-          "value": "2"
+          "text": "1",
+          "value": "1"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "EYEOhcwnz"
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "query_result(count(node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}))",
-        "error": {
-          "message": "\"Bad Gateway\"",
-          "status": 502,
-          "statusText": "Bad Gateway"
-        },
         "hide": 2,
         "includeAll": false,
         "label": "total_servers",
@@ -3906,7 +4183,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "VM Monitoring",
+  "title": "OS_Monitoring",
   "uid": "xfpJB9FGz",
   "version": 1,
   "weekStart": ""
