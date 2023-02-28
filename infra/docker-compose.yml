@@ -87,6 +87,7 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - DS_PROMETHEUS=Prometheus # this is Datasource name. See grafana/provisioning/datasources/prometheus.dea.yml
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/OS_Monitoring.json
     depends_on:
       - prometheus
     ports:
