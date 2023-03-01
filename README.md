@@ -6,6 +6,15 @@ DevOps tools for local development
 192.168.1.45	dea
 192.168.1.45	nexus.dea
 192.168.1.45	gitlab.dea
+192.168.1.45	prometheus.dea
+192.168.1.45	node-exporter.dea
+192.168.1.45	cadvisor.dea
+192.168.1.45	grafana.dea
+192.168.1.45	postgres.dea
+192.168.1.45	pgadmin.dea
+192.168.1.45	minio.dea
+192.168.1.45	minio-metrics.dea
+
 ```
 
 ### Create nessessary directories @ server, in same directory as `docker-compose.yaml` will be placed:
