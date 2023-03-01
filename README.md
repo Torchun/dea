@@ -30,4 +30,11 @@ chown -R 472:0 ./grafana/data
 chown -R 472:0 ./grafana/provisioning
 chown -R 472:0 ./grafana/dashboards
 chown -R 472:0 ./grafana/dashboard.yaml
+
+mkdir -p ./postgres/data
+mkdir -p ./postgres/exporter
+mkdir -p ./postgres/init
+
+mkdir -p ./pgadmin
+chown -R 5050:0 ./pgadmin
 ```
