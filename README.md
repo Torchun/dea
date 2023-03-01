@@ -37,4 +37,6 @@ mkdir -p ./postgres/init
 
 mkdir -p ./pgadmin
 chown -R 5050:0 ./pgadmin
+
+mkdir -p ./minio
 ```

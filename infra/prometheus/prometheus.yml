@@ -21,12 +21,12 @@ scrape_configs:
   - job_name: "node"
     static_configs:
       - targets:
-          - "192.168.1.45:42004"
+        - "192.168.1.45:42004"
 
   - job_name: "cadvisor"
     static_configs:
       - targets:
-              - "192.168.1.45:42005"
+        - "192.168.1.45:42005"
 
   - job_name: 'nexus'
     basic_auth:
@@ -34,13 +34,20 @@ scrape_configs:
       password: 'prometheus'
     static_configs:
       - targets:
-          - "192.168.1.45:42002"
+        - "192.168.1.45:42002"
     metrics_path: /service/metrics/prometheus
 
   - job_name: "postgres-exporter"
     static_configs:
       - targets:
-              - "192.168.1.45:42008"
+        - "192.168.1.45:42008"
+
+  - job_name: "minio"
+    scheme: http
+    static_configs:
+      - targets:
+        - "192.168.1.45:42010"
+    metrics_path: /minio/v2/metrics/cluster
 
 # can be checked via: 
 # https://prometheus.dea/targets?search=
