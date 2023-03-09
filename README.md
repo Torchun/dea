@@ -14,6 +14,7 @@ DevOps tools for local development
 192.168.1.45	pgadmin.dea
 192.168.1.45	minio.dea
 192.168.1.45	minio-metrics.dea
+192.168.1.45	jupyter.dea
 
 ```
 
@@ -48,4 +49,7 @@ mkdir -p ./pgadmin
 chown -R 5050:0 ./pgadmin
 
 mkdir -p ./minio
+
+mkdir -p ./jupyter/notebooks
+chown -R 1000:100 ./jupyter
 ```

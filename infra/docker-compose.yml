@@ -192,6 +192,7 @@ services:
     ports:
       - 42010:9000
       - 42011:9001
+    restart: unless-stopped
     volumes:
       - ./minio:/data
     environment:
@@ -201,5 +202,17 @@ services:
       MINIO_PROMETHEUS_JOB_ID: "minio" # same as in ./prometheus/prometheus.yml
       MINIO_PROMETHEUS_URL: "http://192.168.1.45:42003" # same as in ./prometheus/prometheus.yml
     command: server --console-address ":9001" /data
+
+  jupyter:
+    image: jupyter/datascience-notebook:notebook-6.5.2
+    container_name: jupyter
+    restart: unless-stopped
+    ports:
+      - 42012:8888
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      JUPYTER_TOKEN: "password"
+    volumes:
+      - ./jupyter/notebooks:/home/jovyan/notebooks # ensure "chown -R 1000:100 ./jupyter"
 
 
