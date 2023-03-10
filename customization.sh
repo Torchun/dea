@@ -13,15 +13,24 @@ done
 ###
 
 ### Change domain
-TREE=$(grep -rlF $OLD_DOMAIN | grep -v `basename $0` | grep -v '.git/')
+TREE=$(grep -rlF $OLD_DOMAIN | grep -v `basename $0` | grep -v '.git/' | grep -v 'README' | grep -v 'nginx/conf.d')
 for j in $TREE
 do
   sed -i "s|${OLD_DOMAIN}|${NEW_DOMAIN}|g" $j
 done
+
+cd infra/nginx/
+TREE=$(grep -rlF ${OLD_DOMAIN:1} | grep -v `basename $0` | grep -v '.git/' | grep -v 'README')
+for j in $TREE
+do
+  sed -i "s|${OLD_DOMAIN:1}|${NEW_DOMAIN:1}|g" $j
+done
+cd -
 ###
 
 ### Generate certs
 cd infra/nginx/conf.d/ssl/
+
 openssl genrsa -des3 -out CAPrivate.key 2048
 openssl req -x509 -new -nodes -key CAPrivate.key -sha256 -days 3650 -out CAPrivate.pem
 openssl genrsa -out MyPrivate.key 2048
