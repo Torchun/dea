@@ -15,6 +15,7 @@ DevOps tools for local development
 192.168.1.45	minio.dea
 192.168.1.45	minio-metrics.dea
 192.168.1.45	jupyter.dea
+192.168.1.45	carto.dea
 
 ```
 
@@ -52,4 +53,17 @@ mkdir -p ./minio
 
 mkdir -p ./jupyter/notebooks
 chown -R 1000:100 ./jupyter
+
+mkdir -p ./carto/12/main
+chmod 750 ./carto/12
+chmod 750 ./carto/12/main # fill with data as instructed below
+chown -R 103:105 ./carto
+```
+
+### CartoDB data
+```
+docker create --name cartodb_pgdata sverhoeven/cartodb
+# Change to directory to save the Postgresql data dir (cartodb_pgdata) of the CartoDB image
+docker cp cartodb_pgdata:/var/lib/postgresql $PWD/cartodb_pgdata
+docker rm -f cartodb_pgdata
 ```

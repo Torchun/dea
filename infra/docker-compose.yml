@@ -215,4 +215,14 @@ services:
     volumes:
       - ./jupyter/notebooks:/home/jovyan/notebooks # ensure "chown -R 1000:100 ./jupyter"
 
+  carto:
+    image: sverhoeven/cartodb:py3pg12postgis3
+    container_name: carto
+    restart: unless-stopped
+    ports:
+      - 42013:80
+    environment:
+      CARTO_HOSTNAME: carto.dea
+    volumes:
+      - ./carto:/var/lib/postgresql # ensure "chmod 750 ./carto/12 && chmod 750 ./carto/12/main && chown -R 103:105 ./carto" and fill up with data as mentioned in ../README.md
 

@@ -61,6 +61,7 @@ sudo chown -R 472:0 ./grafana/dashboards
 sudo chown -R 472:0 ./grafana/dashboard.yaml
 
 sudo chown -R 5050:0 ./pgadmin
+sudo chown -R 103:105 ./carto
 cd -
 ###
 
