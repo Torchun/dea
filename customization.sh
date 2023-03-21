@@ -61,6 +61,9 @@ sudo chown -R 472:0 ./grafana/dashboards
 sudo chown -R 472:0 ./grafana/dashboard.yaml
 
 sudo chown -R 5050:0 ./pgadmin
+
+sudo chmod 750 ./carto/12
+sudo chmod 750 ./carto/12/main # fill with data as instructed below
 sudo chown -R 103:105 ./carto
 cd -
 ###
