@@ -1,0 +1,53 @@
+---
+global:
+  scrape_interval: '5s'
+
+rule_files:
+  - "alerts.yml"
+
+    #alerting:
+    #  alertmanagers:
+    #  - scheme: http
+    #    static_configs:
+    #    - targets:
+    #      - "alertmanager:9093"
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets:
+        - "172.17.0.1:42003"
+
+  - job_name: "node"
+    static_configs:
+      - targets:
+        - "172.17.0.1:42004"
+
+  - job_name: "cadvisor"
+    static_configs:
+      - targets:
+        - "172.17.0.1:42005"
+
+  - job_name: 'nexus'
+    basic_auth:
+      username: 'prometheus'
+      password: 'prometheus'
+    static_configs:
+      - targets:
+        - "172.17.0.1:42002"
+    metrics_path: /service/metrics/prometheus
+
+  - job_name: "postgres-exporter"
+    static_configs:
+      - targets:
+        - "172.17.0.1:42008"
+
+  - job_name: "minio"
+    scheme: http
+    static_configs:
+      - targets:
+        - "172.17.0.1:42010"
+    metrics_path: /minio/v2/metrics/cluster
+
+# can be checked via: 
+# https://prometheus.dea/targets?search=
