@@ -28,6 +28,7 @@ RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
     # - bzip2 is necessary to extract the micromamba executable.
     bzip2 \
+    unzip \
     ca-certificates \
     locales \
     sudo \
@@ -39,6 +40,8 @@ RUN apt-get update --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
+
+
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda \
@@ -125,6 +128,19 @@ RUN set -x && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+### Install cx_Oracle
+USER root
+RUN apt-get update && apt-get install -y libaio1
+WORKDIR /opt/oracle
+RUN wget https://download.oracle.com/otn_software/linux/instantclient/instantclient-basiclite-linuxx64.zip && \
+    unzip instantclient-basiclite-linuxx64.zip && rm -f instantclient-basiclite-linuxx64.zip && \
+    cd /opt/oracle/instantclient* && rm -f *jdbc* *occi* *mysql* *README *jar uidrvci genezi adrci && \
+    echo /opt/oracle/instantclient* > /etc/ld.so.conf.d/oracle-instantclient.conf && ldconfig
+WORKDIR /tmp
+USER ${NB_UID}
+RUN python -m pip install cx_Oracle
+### Install cx_Oracle completed
 
 # Configure container startup
 ENTRYPOINT ["tini", "-g", "--"]
