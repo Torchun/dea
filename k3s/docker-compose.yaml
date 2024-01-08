@@ -1,0 +1,60 @@
+# to run define K3S_TOKEN, K3S_VERSION is optional, eg:
+#   K3S_TOKEN=${RANDOM}${RANDOM}${RANDOM} docker-compose -f docker-compose.yaml up -d
+# can be set manually forever:
+#   K3S_TOKEN=bebebe docker-compose -f docker-compose.yaml up -d
+
+version: '3'
+services:
+
+  k3s-server:
+    image: rancher/k3s:v1.27.9-k3s1
+    command: server --disable traefik --node-external-ip 192.168.1.45
+    hostname: k3s-server
+    tmpfs:
+    - /run
+    - /var/run
+    privileged: true
+    environment:
+    # - K3S_TOKEN=${K3S_TOKEN:?err}
+    - K3S_TOKEN=bebebe
+    - K3S_KUBECONFIG_OUTPUT=/output/kubeconfig.yaml
+    - K3S_KUBECONFIG_MODE=666
+    volumes:
+    - ./k3s-data:/var/lib/rancher/k3s
+    # This is just so that we get the kubeconfig file out
+    - ./config:/output
+    - ./storage:/storage
+    ports:
+    - 6443:6443
+
+  k3s-agent:
+    image: rancher/k3s:v1.27.9-k3s1
+    command: agent --node-external-ip 192.168.1.45
+    hostname: k3s-agent-0
+    tmpfs:
+    - /run
+    - /var/run
+    privileged: true
+    environment:
+    - K3S_URL=https://k3s-server:6443
+    # - K3S_TOKEN=${K3S_TOKEN:?err}
+    - K3S_TOKEN=bebebe
+    volumes:
+    - /docker/www:/var/www
+    ports:
+    - 10080:80
+    - 10443:443
+
+### remove existing agent secret
+# kubectl get secret -n kube-system
+# kubectl delete secret -n kube-system k3s-agent-0.node-password.k3s
+
+### ensure it is Ok:
+# kubectl get nodes -A
+# kubectl get pods -o wide --all-namespaces
+
+# docker-compose -f docker-compose.yaml logs -f
+
+### add role/label to agent node:
+# kubectl label node k3s-agent-0 node-role.kubernetes.io/worker=worker
+# kubectl get nodes -o wide -A
