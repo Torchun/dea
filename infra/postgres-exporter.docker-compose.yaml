@@ -7,8 +7,8 @@ services:
     restart: unless-stopped
     container_name: postgres-exporter
     environment:
-      DATA_SOURCE_URI: "192.168.1.70:42007/crawlerdb?sslmode=disable"
-      DATA_SOURCE_USER: "crawler"
+      DATA_SOURCE_URI: "192.168.1.70:42007/postgres?sslmode=disable"
+      DATA_SOURCE_USER: "postgres"
       DATA_SOURCE_PASS: "password"
       PG_EXPORTER_EXTEND_QUERY_PATH: "/etc/postgres_exporter/queries.yaml"
     volumes:
