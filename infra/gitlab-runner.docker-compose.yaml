@@ -1,0 +1,86 @@
+version: "3.7"
+
+services:
+  runner:
+    image: gitlab/gitlab-runner:v18.0.1 # Latest stable version
+    container_name: "gitlab-runner"
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /storage/nvme/gitlab-runner/config:/etc/gitlab-runner:z
+### to register: go to gitlab, add new runner, use provided commands to run inside this container via docker exec
+
+
+
+################################
+######## FOR DIND USAGE ########
+################################
+#
+#   dind:
+#     image: docker:dind # Latest stable version
+#     restart: always
+#     privileged: true
+#     container_name: "dind"
+#     environment:
+#       DOCKER_TLS_CERTDIR: /certs
+#       DOCKER_TLS_SAN: DNS:dind
+#     volumes:
+#       - /storage/nvme/gitlab-runner/var/lib/docker:/var/lib/docker
+#       - /storage/nvme/gitlab-runner/certs:/certs
+#     healthcheck:
+#       test: ["CMD", "docker", "info"]
+#       interval: 10s
+#       timeout: 5s
+#       retries: 3
+#       start_period: 5s
+
+### run once
+### docker-compose -f gitlab-runner.docker-compose.yaml up register-runner
+#   register-runner:
+#     image: gitlab/gitlab-runner:v18.0.1 # Always use latest stable
+#     container_name: "register-runner"
+#     restart: 'no'
+#     depends_on:
+#       dind:
+#         condition: service_healthy
+#     entrypoint: ["/bin/sh", "-c"]
+#     command:
+#       - |
+#         if [ ! -f /etc/gitlab-runner/config.toml ]; then
+#           echo "Config does not exist, registering runner..."
+#           gitlab-runner register \
+#             --non-interactive \
+#             --locked=false \
+#             --name="GitLab Runner" \
+#             --executor=docker \
+#             --docker-image=alpine:latest \
+#             --docker-host=tcp://dind:2376 \
+#             --tag-list=${RUNNER_TAGS:-"docker,alpine"} \
+#             --run-untagged=true
+#         else
+#           echo "Runner config already exists, skipping registration"
+#         fi
+#     environment:
+#       - CI_SERVER_URL=http://192.168.1.70:42001
+#       - REGISTRATION_TOKEN=glrt-kDfrBwQ0vR98tmFYfM2WoHQ6MQp1OjQH.01.0w0seyb6i
+#       - DOCKER_TLS_VERIFY=1
+#       - DOCKER_CERT_PATH=/certs/client
+#     volumes:
+#       - /storage/nvme/gitlab-runner/config:/etc/gitlab-runner:z
+#       - /storage/nvme/gitlab-runner/certs:/certs:ro
+
+#   runner:
+#     image: gitlab/gitlab-runner:v18.0.1 # Latest stable version
+#     container_name: "gitlab-runner"
+#     restart: always
+#     depends_on:
+#       dind:
+#         condition: service_healthy
+#     environment:
+#       - DOCKER_HOST=tcp://dind:2376
+#       - DOCKER_TLS_VERIFY=1
+#       - DOCKER_CERT_PATH=/certs/client
+#     volumes:
+#       - /storage/nvme/gitlab-runner/config:/etc/gitlab-runner:z
+#       - /storage/nvme/gitlab-runner/certs:/certs:ro
+

@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  grafana:
+    # image: grafana/grafana:9.3.6
+    image: grafana/grafana:12.0.1
+    restart: unless-stopped
+    container_name: grafana
+    volumes:
+      - /storage/nvme/grafana/data:/var/lib/grafana # ensure "chown -R 472:0 ./grafana/data"
+      - /storage/nvme/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources # ensure "chown -R 472:0 ./grafana/provisioning"
+      - /storage/nvme/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml # ensure "chown -R 472:0 ./grafana/dashboard.yaml"
+      - /storage/nvme/grafana/dashboards:/var/lib/grafana/dashboards # ensure "chown -R 472:0 ./grafana/dashboards"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - DS_PROMETHEUS=Prometheus # this is Datasource name. See grafana/provisioning/datasources/prometheus.dev.yml
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/OS_Monitoring.json
+    ports:
+      - 42006:3000
+

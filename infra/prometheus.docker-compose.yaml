@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  prometheus:
+    # image: prom/prometheus:v2.42.0
+    image: prom/prometheus:v3.4.1
+    restart: unless-stopped
+    container_name: "prometheus"
+    ports:
+      - 42003:9090
+    volumes:
+      - /storage/nvme/prometheus/data:/prometheus # ensure "chown -R 65534:65534 ./prometheus"
+      - /storage/nvme/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml # ensure "chown -R 65534:65534 ./prometheus"
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--storage.tsdb.retention.time=731d" # 2 years

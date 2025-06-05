@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  gitlab:
+    # image: gitlab/gitlab-ce:15.8.1-ce.0
+    # image: gitlab/gitlab-ce:15.11.13-ce.0
+    # image: gitlab/gitlab-ce:16.3.9-ce.0
+    # image: gitlab/gitlab-ce:16.7.10-ce.0
+    # image: gitlab/gitlab-ce:16.11.10-ce.0
+    # image: gitlab/gitlab-ce:17.1.8-ce.0
+    # image: gitlab/gitlab-ce:17.3.7-ce.0
+    # image: gitlab/gitlab-ce:17.5.5-ce.0
+    # image: gitlab/gitlab-ce:17.8.7-ce.0
+    # image: gitlab/gitlab-ce:17.11.3-ce.0
+    image: gitlab/gitlab-ce:18.0.1-ce.0
+    restart: unless-stopped
+    container_name: "gitlab"
+    hostname: "gitlab.dev"
+    environment:
+      # using IP:port in external_url forces gitlab to run nginx on specified port instead of default 80
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://192.168.1.70:42001'
+    ports:
+      # - 42001:80
+      - 42001:42001
+    volumes:
+      - /storage/nvme/gitlab/config:/etc/gitlab
+      - /storage/nvme/gitlab/logs:/var/log/gitlab
+      - /storage/nvme/gitlab/data:/var/opt/gitlab
+    shm_size: "256m"

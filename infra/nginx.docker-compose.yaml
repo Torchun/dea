@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  nginx:
+    # image: nginx:1.23.3
+    image: nginx:1.28.0
+    restart: always
+    container_name: "nginx"
+    volumes:
+      - /storage/nvme/nginx/conf.d:/etc/nginx/conf.d # no need to modify permissions
+    ports:
+      - 80:80
+      - 443:443

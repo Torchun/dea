@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  pgadmin:
+    # image: dpage/pgadmin4:6.20
+    image: dpage/pgadmin4:9.4.0
+    restart: unless-stopped
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pgadmin@mail.local"
+      PGADMIN_DEFAULT_PASSWORD: "password"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - /storage/nvme/pgadmin:/var/lib/pgadmin # ensure "chown -R 5050:0 ./pgadmin/"
+    ports:
+      - 42009:80
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G

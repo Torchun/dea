@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  postgres-exporter:
+    # image: bitnami/postgres-exporter:0.11.1
+    image: bitnami/postgres-exporter:0.17.1
+    restart: unless-stopped
+    container_name: postgres-exporter
+    environment:
+      DATA_SOURCE_URI: "192.168.1.70:42007/crawlerdb?sslmode=disable"
+      DATA_SOURCE_USER: "crawler"
+      DATA_SOURCE_PASS: "password"
+      PG_EXPORTER_EXTEND_QUERY_PATH: "/etc/postgres_exporter/queries.yaml"
+    volumes:
+      - /storage/nvme/postgres/exporter/queries.yaml:/etc/postgres_exporter/queries.yaml:ro
+    ports:
+      - 42008:9187
+    deploy:
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 500M
+

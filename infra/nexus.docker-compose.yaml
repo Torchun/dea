@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  nexus:
+    # image: sonatype/nexus3:3.46.0
+    image: sonatype/nexus3:3.80.0
+    restart: unless-stopped
+    container_name: "nexus3"
+    volumes:
+      - /storage/nvme/nexus/data:/nexus-data # ensure "chown -R 200:200 ./nexus/data"
+    ports:
+      - 42002:8081
