@@ -1,0 +1,100 @@
+version: '3.7'
+
+### PREPARE DATABASE "vault_db"
+#
+# -- CREATE USER vault WITH PASSWORD 'password';
+# -- CREATE DATABASE vault_db OWNER vault;
+# 
+# Login to DB as "vault" user
+#
+# CREATE TABLE vault_kv_store (
+#   parent_path TEXT COLLATE "C" NOT NULL,
+#   path        TEXT COLLATE "C",
+#   key         TEXT COLLATE "C",
+#   value       BYTEA,
+#   CONSTRAINT pkey PRIMARY KEY (path, key)
+# );
+# 
+# CREATE INDEX parent_path_idx ON vault_kv_store (parent_path);
+# 
+# CREATE TABLE vault_ha_locks (
+#   ha_key                                      TEXT COLLATE "C" NOT NULL,
+#   ha_identity                                 TEXT COLLATE "C" NOT NULL,
+#   ha_value                                    TEXT COLLATE "C",
+#   valid_until                                 TIMESTAMP WITH TIME ZONE NOT NULL,
+#   CONSTRAINT ha_key PRIMARY KEY (ha_key)
+# );
+
+# docker-compose -f vault.docker-compose.yml up -d
+# docker exec -ti vault sh
+# / # vault operator init
+# Unseal Key 1: 8A3ryjMDiJa9RD7DKov5S9L3VdudifpI8qm8IoOpZQ5C
+# Unseal Key 2: LguP4dB1O1b9z7qRR/Y5AtphqJJxnuqzEJWVQHq5sQZh
+# Unseal Key 3: iCKRd/MSrfExwWsKdN44iP3rF6H188lhs+Hlyxci+6MP
+# Unseal Key 4: mxK/XX3SEV+asYG/QVjo+SFBPkubp4Q/mEhC+4qC04CL
+# Unseal Key 5: 1o7s4ITT9FGpgSt5wGZNV7a6kaH8S6wK76m6C9QAwu3g
+# 
+# Initial Root Token: hvs.UyNjPH2XvwNkJBkstXUAj4nw
+# 
+# Vault initialized with 5 key shares and a key threshold of 3. Please securely
+# distribute the key shares printed above. When the Vault is re-sealed,
+# restarted, or stopped, you must supply at least 3 of these keys to unseal it
+# before it can start servicing requests.
+# 
+# Vault does not store the generated root key. Without at least 3 keys to
+# reconstruct the root key, Vault will remain permanently sealed!
+# 
+# It is possible to generate new unseal keys, provided you have a quorum of
+# existing unseal keys shares. See "vault operator rekey" for more information.
+# 
+
+services:
+  vault:
+    image: vault:1.13.3
+    container_name: vault
+    restart: unless-stopped
+    ports:
+      - 42017:8201
+    environment:
+      SKIP_SETCAP: true
+      VAULT_ADDR: 'http://0.0.0.0:8201'
+      VAULT_LOCAL_CONFIG: |
+        {
+          "api_addr": "http://0.0.0.0:8201",
+          "ui": true,
+          "disable_clustering": true,
+          "disable_mlock": "true",
+          "log_level": "info",
+          "storage": {
+            "postgresql": {
+              "connection_url": "postgres://vault:password@192.168.1.70:42007/vault_db?sslmode=disable",
+              "table": "vault_kv_store",
+              "ha_enabled": false,
+              "ha_table": "vault_ha_locks"
+            }
+          },
+          "listener": {
+            "tcp": {
+              "address": "0.0.0.0:8201",
+              "tls_disable": "1"
+            }
+          },
+          "default_lease_ttl": "168h",
+          "max_lease_ttl": "0h"
+        }
+      # VAULT_DEV_ROOT_TOKEN_ID: '00000000-0000-0000-0000-000000000000'
+      VAULT_ROOT_TOKEN_ID: '00000000-0000-0000-0000-000000000000'
+      VAULT_TOKEN: '00000000-0000-0000-0000-000000000000'
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - /storage/nvme/vault/data:/vault/data # ensure "chown -R 100:1000 /storage/nvme/vault/data"
+      - /storage/nvme/vault/file:/vault/file # ensure "chown -R 100:1000 /storage/nvme/vault/file"
+      - /storage/nvme/vault/logs:/vault/logs # ensure "chown -R 100:1000 /storage/nvme/vault/logs"
+      - /storage/nvme/vault/config:/vault/config # ensure "chown -R 100:1000 /storage/nvme/vault/config"
+      - /storage/nvme/vault/secrets:/vault/secrets # ensure "chown -R 100:1000 /storage/nvme/vault/secrets"
+#    healthcheck:
+#      retries: 5
+    command: server
+
+
